@@ -1,22 +1,27 @@
-//var spotifyLink = localStorage.getItem("artist-id");
-
 $("#searchBtn").click(function () {
-  var searchEl = $("#searchInput").val();
-  localStorage.setItem("city", searchEl);
+  var searchCity = $("#searchInput").val();
+  localStorage.setItem("city", searchCity);
+  getCoordinates();
 });
 
-GeolocationCoordinates();
 getWeather();
 
 function getCoordinates() {
+  var currentCity = localStorage.getItem("city");
   var coordUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=city name&limit={limit}&appid=aa4420eedeb1d9811827bbeefd8042fb";
+    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    currentCity +
+    "&appid=aa4420eedeb1d9811827bbeefd8042fb";
   fetch(coordUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       console.log(data);
+      var currentCityLong = data.lon;
+      var currentCityLat = data.lat;
+      localStorage.setItem("currentLong", currentCityLong);
+      localStorage.setItem("currentLat", currentCityLat);
     });
 }
 
