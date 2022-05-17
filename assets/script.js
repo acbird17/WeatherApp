@@ -4,8 +4,6 @@ $("#searchBtn").click(function () {
   getCoordinates();
 });
 
-getWeather();
-
 function getCoordinates() {
   var currentCity = localStorage.getItem("city");
   var coordUrl =
@@ -18,16 +16,23 @@ function getCoordinates() {
     })
     .then(function (data) {
       console.log(data);
-      var currentCityLong = data.lon;
-      var currentCityLat = data.lat;
+      var currentCityLong = data[0].lon;
+      var currentCityLat = data[0].lat;
       localStorage.setItem("currentLong", currentCityLong);
       localStorage.setItem("currentLat", currentCityLat);
+      getWeather();
     });
 }
 
 function getWeather() {
+  var long = localStorage.getItem("currentLong");
+  var lat = localStorage.getItem("currentLat");
   var cityUrl =
-    "https://api.openweathermap.org/data/2.5/onecall?lat=39.7392&lon=104.9903&appid=aa4420eedeb1d9811827bbeefd8042fb";
+    "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+    lat +
+    "&lon=" +
+    long +
+    "&appid=aa4420eedeb1d9811827bbeefd8042fb&units=imperial";
 
   fetch(cityUrl)
     .then(function (response) {
