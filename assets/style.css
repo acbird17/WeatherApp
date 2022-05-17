@@ -1,0 +1,17 @@
+.title {
+  text-align: center;
+}
+
+.card {
+  height: 300px;
+  background-color: lightslategray;
+}
+
+#details {
+  height: 400px;
+  width: 100%;
+}
+#day5 {
+  height: 75px;
+  width: 100%;
+}

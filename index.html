@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/1921593a71.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Weather Tracker</title>
+  </head>
+  <body class="bg-light">
+    <header class="jumbotron jumbotron-fluid bg-info">
+      <h1 class="title">Weather Dashboard</h1>
+    </header>
+    <main class="d-flex border border-dark">
+      <div id="sidebar" class="col-2 flex-column border border-dark">
+        <h2>Search for a City:</h2>
+        <input
+          id="searchInput"
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Paris..."
+          aria-label="Search"
+        />
+        <button
+          id="searchBtn"
+          class="btn btn-outline-success btn-block my-2 my-sm-0"
+          type="submit"
+        >
+          Search
+        </button>
+        <hr />
+        <ul class="list-group border border-dark">
+          <li class="list-group-item py-4">Cras justo odio</li>
+          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
+          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
+          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
+          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
+          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
+          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
+          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
+          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
+        </ul>
+      </div>
+      <div id="content" class="col-10 border border-dark">
+        <div id="details" class="border border-dark">asdfasdfsdf</div>
+        <h2 id="day5" class="border border-dark">5 Day Forecast:</h2>
+        <div id="forecast" class="d-flex border border-dark">
+          <div class="card mx-1" style="width: 18rem">
+            <img
+              class="card-img-top"
+              src=".../100px180/?text=Image cap"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+          <div class="card mx-1" style="width: 18rem">
+            <img
+              class="card-img-top"
+              src=".../100px180/?text=Image cap"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+          <div class="card mx-1" style="width: 18rem">
+            <img
+              class="card-img-top"
+              src=".../100px180/?text=Image cap"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+          <div class="card mx-1" style="width: 18rem">
+            <img
+              class="card-img-top"
+              src=".../100px180/?text=Image cap"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+          <div class="card mx-1" style="width: 18rem">
+            <img
+              class="card-img-top"
+              src=".../100px180/?text=Image cap"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/script.js"></script>
+</html>
