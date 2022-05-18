@@ -49,10 +49,24 @@ function getWeather() {
 function setCurrent() {
   var cObj = JSON.parse(localStorage.getItem("weatherObj"));
   console.log(cObj);
+  var currentDate = moment().format("llll");
+  var currentCity = localStorage.getItem("city");
   var currentTemp = cObj.current.temp;
   var currentWind = cObj.current.wind;
   var currentHum = cObj.current.humidity;
   var currentUV = cObj.current.uvi;
+  // $("#details").append(
+  // $("<div></div>")
+  //   .attr("id", "currentTitle")
+  //   .addClass("text-dark")
+  $("#currentTitle").text(currentCity.toUpperCase() + ":  " + currentDate);
+  $("#currentTemp").text(currentTemp + " F");
+  $("#currentWind").text(currentWind + " MPH");
+  $("#currentHumidity").text(currentHum + " %");
+  $("#currentUV").text(currentUV);
 }
 
+function fiveDay() {
+  var obj = JSON.parse(localStorage).getItem;
+}
 //temp, wind, humidity, uv index in current icon for current conditions
