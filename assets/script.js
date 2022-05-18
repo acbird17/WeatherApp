@@ -26,6 +26,8 @@ function getCoordinates() {
       getWeather();
     });
 }
+//saves past searches and watches for clicks
+
 //takes coordinates and puts them into a weather search
 function getWeather() {
   var long = localStorage.getItem("currentLong");
@@ -53,7 +55,6 @@ function setCurrent() {
   var currentDate = moment().format("llll");
   var currentCity = localStorage.getItem("city");
   var currentIcon = cObj.current.weather[0].id;
-  console.log(currentIcon);
   var currentTemp = cObj.current.temp;
   var currentWind = cObj.current.wind_speed;
   var currentHum = cObj.current.humidity;
@@ -64,33 +65,61 @@ function setCurrent() {
   $("#currentHumidity").text(currentHum + " %");
   $("#currentUV").text(currentUV);
   if (currentIcon <= 232 && currentIcon >= 200) {
-    $("#currentIcon").append('<i class="fa-solid fa-cloud-bolt"></i>');
+    $("#currentIcon").addClass("fa-solid fa-cloud-bolt");
   } else if (currentIcon <= 531 && currentIcon >= 300) {
-    $("#currentIcon").append('<i class="fa-solid fa-cloud-showers-heavy"></i>');
+    $("#currentIcon").addClass("fa-solid fa-cloud-showers-heavy");
   } else if (currentIcon <= 622 && currentIcon >= 600) {
-    $("#currentIcon").append('<i class="fa-solid fa-snowflake"></i>');
+    $("#currentIcon").addClass("fa-solid fa-snowflake");
   } else if (currentIcon <= 781 && currentIcon >= 701) {
-    $("#currentIcon").append('<i class="fa-solid fa-smog"></i>');
+    $("#currentIcon").addClass("fa-solid fa-smog");
   } else if (currentIcon <= 804 && currentIcon >= 802) {
-    $("#currentIcon").append('<i class="fa-solid fa-cloud"></i>');
+    $("#currentIcon").addClass("fa-solid fa-cloud");
   } else if (currentIcon <= 801 && currentIcon >= 800) {
-    $("#currentIcon").append('<i class="fa-solid fa-sun"></i>');
-  } else {
-    $("#currentIcon").append("");
+    $("#currentIcon").addClass("fa-solid fa-sun");
+  }
+  if (currentUV <= 2 && currentUV >= 0) {
+    $("#currentUV").addClass("low");
+  } else if (currentUV <= 5 && currentUV > 2) {
+    $("#currentUV").addClass("moderate");
+  } else if (currentUV <= 7 && currentUV > 5) {
+    $("#currentUV").addClass("high");
+  } else if (currentUV <= 10 && currentUV > 7) {
+    $("#currentUV").addClass("veryHigh");
+  } else if (currentUV > 10) {
+    $("#currentUV").addClass("extreme");
   }
 }
 //sets the 5 day weather forecast cards
 function fiveDay() {
   var obj = JSON.parse(localStorage.getItem("weatherObj"));
   for (var i = 0; i < 5; i++) {
-    var date = moment().add(i, "days").calendar(); ///fix formatting
+    var unixDate = obj.daily[i].dt; ///fix formatting
+    var unix = eval(unixDate * 1000);
+    var dt = new Date(unix);
+    var date = dt.toLocaleDateString();
+    var iconVal = obj.daily[i].weather[0].id;
     var temp = obj.daily[i].temp.max;
     var wind = obj.daily[i].wind_speed;
     var humidity = obj.daily[i].humidity;
     $("#date" + i).text(date);
-    //icon
     $("#temp" + i).text(temp + " F");
     $("#wind" + i).text(wind + " MPH");
     $("#humidity" + i).text(humidity + " %");
+    if (iconVal <= 232 && iconVal >= 200) {
+      $("#icon" + i).addClass("fa-solid fa-cloud-bolt");
+    } else if (iconVal <= 531 && iconVal >= 300) {
+      $("#icon" + i).addClass("fa-solid fa-cloud-showers-heavy");
+    } else if (iconVal <= 622 && iconVal >= 600) {
+      $("#icon" + i).addClass("fa-solid fa-snowflake");
+    } else if (iconVal <= 781 && iconVal >= 701) {
+      $("#icon" + i).addClass("fa-solid fa-smog");
+    } else if (iconVal <= 804 && iconVal >= 802) {
+      $("#icon" + i).addClass("fa-solid fa-cloud");
+    } else if (iconVal <= 801 && iconVal >= 800) {
+      $("#icon" + i).addClass("fa-solid fa-sun");
+    }
   }
 }
+
+//var date = moment().add(i, "days").calendar()
+//var s = new Date(1504095567183).toLocaleDateString("en-US")
