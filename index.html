@@ -31,7 +31,7 @@
     </header>
     <main class="d-flex border border-dark">
       <div id="sidebar" class="col-2 flex-column border border-dark">
-        <h2>Search for a City:</h2>
+        <h3>Search for a City:</h3>
         <input
           id="searchInput"
           class="form-control mr-sm-2"
@@ -41,93 +41,67 @@
         />
         <button
           id="searchBtn"
-          class="btn btn-outline-success btn-block my-2 my-sm-0"
+          class="btn btn-outline-success btn-block btn-primary text-dark my-2 my-sm-0"
           type="submit"
         >
           Search
         </button>
         <hr />
         <ul class="list-group border border-dark">
-          <li class="list-group-item py-4">Cras justo odio</li>
-          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
-          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
-          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
-          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
-          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
-          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
-          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
-          <li class="list-group-item py-4">Dapibus ac facilisis in</li>
         </ul>
       </div>
       <div id="content" class="col-10 border border-dark">
-        <div id="details" class="border border-dark">asdfasdfsdf</div>
-        <h2 id="day5" class="border border-dark">5 Day Forecast:</h2>
-        <div id="forecast" class="d-flex border border-dark">
-          <div class="card mx-1" style="width: 18rem">
-            <img
-              class="card-img-top"
-              src=".../100px180/?text=Image cap"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
+        <div id="details" class="border border-dark">
+          <h2 id="currentTitle"></h2>
+          <div class="currentData" id="curentIcon"></div>
+          <div class="currentData">
+            Current Temp: <span id="currentTemp" class="currentData"></span>
           </div>
-          <div class="card mx-1" style="width: 18rem">
-            <img
-              class="card-img-top"
-              src=".../100px180/?text=Image cap"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
+          <div class="currentData">
+            Current Wind: <span id="currentWind" class="currentData"></span>
           </div>
-          <div class="card mx-1" style="width: 18rem">
-            <img
-              class="card-img-top"
-              src=".../100px180/?text=Image cap"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
+          <div class="currentData">
+            Current Humidity: <span id="currentHumidity" class="currentData"></span>
           </div>
-          <div class="card mx-1" style="width: 18rem">
-            <img
-              class="card-img-top"
-              src=".../100px180/?text=Image cap"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
+          <div class="currentData">
+            Current UV Index: <span id="currentUV" class="currentData"></span>
           </div>
-          <div class="card mx-1" style="width: 18rem">
-            <img
-              class="card-img-top"
-              src=".../100px180/?text=Image cap"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
+        </div>
+        <h2 id="fiveDay" class="border border-dark">5 Day Forecast:</h2>
+        <div
+          id="forecast"
+          class="border border-dark">
+          <div id="day0" class="day-cards mx-1 px-1 border border-dark">
+            <div class="date5day"><span id="date0"></span></div>
+            <div class="icons"><span id="icon0"></span></div>
+            <div class="data5">Temp: <span id="temp0"></span></div>
+            <div class="data5">Wind: <span id="wind0"></span></div>
+            <div class="data5">Humidity: <span id="humidity0"></span></div>
+
+          <div id="day1" class="day-cards mx-1 px=1 border border-dark">
+             <div class="date5day"><span id="date1"></span></div>
+            <div class="icons"><span id="icon1"></span></div>
+            <div class="data5">Temp: <span id="temp1"></span></div>
+            <div class="data5">Wind: <span id="wind1"></span></div>
+            <div class="data5">Humidity: <span id="humidity1"></span></div>
+          <div id="day2" class="day-cards mx-1 px=1 border border-dark">
+             <div class="date5day"><span id="date2"></span></div>
+            <div class="icons"><span id="icon2"></span></div>
+            <div class="data5">Temp: <span id="temp2"></span></div>
+            <div class="data5">Wind: <span id="wind2"></span></div>
+            <div class="data5">Humidity: <span id="humidity2"></span></div>
+          <div id="day3" class="day-cards mx-1 px=1 border border-dark">
+             <div class="date5day"><span id="date3"></span></div>
+            <div class="icons"><span id="icon3"></span></div>
+            <div class="data5">Temp: <span id="temp3"></span></div>
+            <div class="data5">Wind: <span id="wind3"></span></div>
+            <div class="data5">Humidity: <span id="humidity3"></span></div>
+          <div id="day4" class="day-cards mx-1 px=1 border border-dark">
+             <div class="date5day"><span id="date4"></span></div>
+            <div class="icons"><span id="icon4"></span></div>
+            <div class="data5">Temp: <span id="temp4"></span></div>
+            <div class="data5">Wind: <span id="wind4"></span></div>
+            <div class="data5">Humidity: <span id="humidity4"></span></div>
         </div>
       </div>
     </main>
@@ -136,3 +110,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="./assets/script.js"></script>
 </html>
+
+
+<!-- <div class="card mx-1" style="width: 18rem">
+            <div class="card-body">
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div> -->
+
+
+          <!-- <i class="fa-solid fa-sun"></i> 800 -->
+          <!-- <i class="fa-solid fa-cloud"></i> 801-804
+          <i class="fa-solid fa-smog"></i> 701-781
+          <i class="fa-solid fa-snowflake"></i> 600-622
+          <i class="fa-solid fa-cloud-bolt"></i> 200-232
+<i class="fa-solid fa-cloud-showers-heavy"></i> 300-531 -->
+
+<!-- <img src="./assets/images/sunny.png" alt="sunny"> -->
