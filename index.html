@@ -29,7 +29,7 @@
     <header class="jumbotron jumbotron-fluid bg-info">
       <h1 class="title">Weather Dashboard</h1>
     </header>
-    <main class="d-flex border border-dark">
+    <main class="d-flex">
       <div id="sidebar" class="col-2 flex-column border border-dark">
         <h3>Search for a City:</h3>
         <input
@@ -47,13 +47,13 @@
           Search
         </button>
         <hr />
-        <ul id="pastSearches" class="list-group border border-dark">
+        <ul id="pastSearches" class="list-group">
         </ul>
       </div>
-      <div id="content" class="col-10 border border-dark">
+      <div id="content" class="col-10 hidden border-border dark">
         <div id="details" class="border border-dark">
           <h2 id="currentTitle"></h2>
-          <div class="currentData"><i id="currentIcon" class=""></i></div>
+          <div class="currentData"><i id="currentIcon"></i></div>
           <div class="currentData">
             Current Temp: <span id="currentTemp" class="currentData"></span>
           </div>
@@ -67,10 +67,9 @@
             Current UV Index: <span id="currentUV" class="currentData"></span>
           </div>
         </div>
-        <h2 id="fiveDay" class="border border-dark">5 Day Forecast:</h2>
+        <div id="fiveDay">5 Day Forecast:</div>
         <div
-          id="forecast"
-          class="border border-dark">
+          id="forecast">
           <div id="day0" class="day-cards mx-1 px-1 border border-dark">
             <div class="date5day"><span id="date0"></span></div>
             <div class="icons"><span id="icon0" class=""></span></div>

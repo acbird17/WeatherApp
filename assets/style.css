@@ -7,10 +7,12 @@
 }
 
 .day-cards {
-  height: 300px;
-  background-color: rgb(138, 189, 240);
+  height: 200px;
+  background-color: rgb(28, 63, 97);
   width: 18rem;
   position: relative !important;
+  color: white;
+  line-height: 2;
 }
 
 .currentData {
@@ -50,6 +52,7 @@
 }
 
 #fiveDay {
+  font-size: 25px;
   height: 75px;
   width: 100%;
 }

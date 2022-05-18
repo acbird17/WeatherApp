@@ -4,6 +4,7 @@ $("#searchBtn").click(function () {
   getCoordinates();
   setCurrent();
   fiveDay();
+  $("#content").show();
 });
 //pulls coordinates of searched city
 function getCoordinates() {
