@@ -43,7 +43,7 @@ $("#searchBtn").click(function () {
 function getCoordinates() {
   var currentCity = localStorage.getItem("city");
   var coordUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     currentCity +
     "&appid=aa4420eedeb1d9811827bbeefd8042fb";
   fetch(coordUrl)
