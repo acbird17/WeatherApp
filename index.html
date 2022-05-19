@@ -47,8 +47,7 @@
           Search
         </button>
         <hr />
-        <ul id="pastSearches" class="list-group">
-        </ul>
+        <ul id="pastSearches" class="list-group"></ul>
       </div>
       <div id="content" class="col-10 hidden border-border dark">
         <div id="details" class="border border-dark">
@@ -61,46 +60,50 @@
             Current Wind: <span id="currentWind" class="currentData"></span>
           </div>
           <div class="currentData">
-            Current Humidity: <span id="currentHumidity" class="currentData"></span>
+            Current Humidity:
+            <span id="currentHumidity" class="currentData"></span>
           </div>
           <div class="currentData">
             Current UV Index: <span id="currentUV" class="currentData"></span>
           </div>
         </div>
         <div id="fiveDay">5 Day Forecast:</div>
-        <div
-          id="forecast">
-          <div id="day0" class="day-cards mx-1 px-1 border border-dark">
+        <div id="forecast" class="d-flex">
+          <div id="day0" class="day-cards mx-1 px-1 border border-dark rounded">
             <div class="date5day"><span id="date0"></span></div>
-            <div class="icons"><span id="icon0" class=""></span></div>
+            <div class="icons pl-3"><span id="icon0" class=""></span></div>
             <div class="data5">Temp: <span id="temp0"></span></div>
             <div class="data5">Wind: <span id="wind0"></span></div>
             <div class="data5">Humidity: <span id="humidity0"></span></div>
-
-          <div id="day1" class="day-cards mx-1 px=1 border border-dark">
-             <div class="date5day"><span id="date1"></span></div>
-            <div class="icons"><span id="icon1" class=""></span></div>
+          </div>
+          <div id="day1" class="day-cards mx-1 px=1 border border-dark rounded">
+            <div class="date5day"><span id="date1"></span></div>
+            <div class="icons pl-3"><span id="icon1" class=""></span></div>
             <div class="data5">Temp: <span id="temp1"></span></div>
             <div class="data5">Wind: <span id="wind1"></span></div>
             <div class="data5">Humidity: <span id="humidity1"></span></div>
-          <div id="day2" class="day-cards mx-1 px=1 border border-dark">
-             <div class="date5day"><span id="date2"></span></div>
-            <div class="icons"><span id="icon2" class=""></span></div>
+          </div>
+          <div id="day2" class="day-cards mx-1 px=1 border border-dark rounded">
+            <div class="date5day"><span id="date2"></span></div>
+            <div class="icons pl-3"><span id="icon2" class=""></span></div>
             <div class="data5">Temp: <span id="temp2"></span></div>
             <div class="data5">Wind: <span id="wind2"></span></div>
             <div class="data5">Humidity: <span id="humidity2"></span></div>
-          <div id="day3" class="day-cards mx-1 px=1 border border-dark">
-             <div class="date5day"><span id="date3"></span></div>
-            <div class="icons"><span id="icon3" class=""></span></div>
+          </div>
+          <div id="day3" class="day-cards mx-1 px=1 border border-dark rounded">
+            <div class="date5day"><span id="date3"></span></div>
+            <div class="icons pl-3"><span id="icon3" class=""></span></div>
             <div class="data5">Temp: <span id="temp3"></span></div>
             <div class="data5">Wind: <span id="wind3"></span></div>
             <div class="data5">Humidity: <span id="humidity3"></span></div>
-          <div id="day4" class="day-cards mx-1 px=1 border border-dark">
-             <div class="date5day"><span id="date4"></span></div>
-            <div class="icons"><span id="icon4" class=""></span></div>
+          </div>
+          <div id="day4" class="day-cards mx-1 px=1 border border-dark rounded">
+            <div class="date5day"><span id="date4"></span></div>
+            <div class="icons pl-3"><span id="icon4" class=""></span></div>
             <div class="data5">Temp: <span id="temp4"></span></div>
             <div class="data5">Wind: <span id="wind4"></span></div>
             <div class="data5">Humidity: <span id="humidity4"></span></div>
+          </div>
         </div>
       </div>
     </main>
@@ -109,23 +112,3 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="./assets/script.js"></script>
 </html>
-
-
-<!-- <div class="card mx-1" style="width: 18rem">
-            <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div> -->
-
-
-          <!-- <i class="fa-solid fa-sun"></i> 800 -->
-          <!-- <i class="fa-solid fa-cloud"></i> 801-804
-          <i class="fa-solid fa-smog"></i> 701-781
-          <i class="fa-solid fa-snowflake"></i> 600-622
-          <i class="fa-solid fa-cloud-bolt"></i> 200-232
-<i class="fa-solid fa-cloud-showers-heavy"></i> 300-531 -->
-
-<!-- <img src="./assets/images/sunny.png" alt="sunny"> -->

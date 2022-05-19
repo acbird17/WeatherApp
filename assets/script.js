@@ -1,4 +1,3 @@
-//This section is a piece of shit and I don't know what i'm doing besides following shit on the internet
 var pastSearches = [];
 
 function storeSearches() {
