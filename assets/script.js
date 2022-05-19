@@ -1,9 +1,43 @@
+//This section is a piece of shit and I don't know what i'm doing besides following shit on the internet
+var pastSearches = [];
+
+function storeSearches() {
+  localStorage.setItem("cities", JSON.stringify(pastSearches));
+}
+
+function createSearchList() {
+  $("#pastSearches").empty();
+  pastSearches.forEach(function (city) {
+    $(".pastSearches").prepend(
+      $(
+        `<button class="list-group-item list-group-item-action cityButton" data-city="${city}">${city}</button>`
+      )
+    );
+  });
+}
+
+function showPastSearches() {
+  var savedSearches = JSON.parse(localStorage.getItem("cities"));
+  if (savedSearches !== null) {
+    pastSearches = savedSearches;
+  }
+  createSearchList();
+  if (pastSearches) {
+    var nonsense = pastSearches[pastSearches.length - 1];
+    getCoordinates();
+    fiveDay();
+  }
+}
+////////////////////////
+////////////////////////
 $("#searchBtn").click(function () {
   var searchCity = $("#searchInput").val();
   localStorage.setItem("city", searchCity);
   getCoordinates();
   setCurrent();
   fiveDay();
+  storeSearches();
+  createSearchList();
   $("#content").show();
 });
 //pulls coordinates of searched city
@@ -122,5 +156,4 @@ function fiveDay() {
   }
 }
 
-//var date = moment().add(i, "days").calendar()
-//var s = new Date(1504095567183).toLocaleDateString("en-US")
+showPastSearches();
