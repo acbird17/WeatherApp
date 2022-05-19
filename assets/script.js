@@ -40,6 +40,7 @@ $("#searchBtn").click(function () {
   $("#content").show();
 });
 //pulls coordinates of searched city
+//making a new comment to do a new push because this won't update to https on the live site for some reason
 function getCoordinates() {
   var currentCity = localStorage.getItem("city");
   var coordUrl =
@@ -60,7 +61,6 @@ function getCoordinates() {
       getWeather();
     });
 }
-//saves past searches and watches for clicks
 
 //takes coordinates and puts them into a weather search
 function getWeather() {
