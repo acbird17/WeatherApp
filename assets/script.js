@@ -1,29 +1,55 @@
-var pastSearches = [];
+var pastSearches = JSON.parse(localStorage.getItem("cities"));
+var weatherObj = JSON.parse(localStorage.getItem("weatherObj"));
 
-function storeSearches() {
-  localStorage.setItem("cities", JSON.stringify(pastSearches));
-}
+showPastSearches();
+
+/////////////////////////button event
+$("body").on("click", ".cityButton", function () {
+  var searchCity = $(this).data("city");
+
+  localStorage.setItem("city", searchCity);
+  getCoordinates(searchCity);
+  setCurrent();
+  fiveDay();
+
+  $("#content").show();
+});
 
 function createSearchList() {
   $("#pastSearches").empty();
   pastSearches.forEach(function (city) {
-    $(".pastSearches").prepend(
+    $("#pastSearches").prepend(
       $(
-        `<button class="list-group-item list-group-item-action cityButton" data-city="${city}">${city}</button>`
+        "<button class='list-group-item list-group-item-action cityButton' data-city='" +
+          city +
+          "'>" +
+          city +
+          "</button>"
       )
     );
   });
+
+  var search = [];
+  $.each(pastSearches, function (i, v) {
+    search.push(v.toUpperCase());
+  });
+
+  pastSearches = $.unique(search);
+
+  localStorage.setItem("cities", JSON.stringify(pastSearches));
 }
 
 function showPastSearches() {
-  var savedSearches = JSON.parse(localStorage.getItem("cities"));
+  var savedSearches = pastSearches; // JSON.parse(localStorage.getItem("cities"));
   if (savedSearches !== null) {
     pastSearches = savedSearches;
   }
   createSearchList();
+
   if (pastSearches) {
-    var nonsense = pastSearches[pastSearches.length - 1];
-    getCoordinates();
+    var lastsearch = pastSearches[pastSearches.length - 1];
+    getCoordinates(lastsearch);
+    setCurrent();
     fiveDay();
   }
 }
@@ -31,18 +57,23 @@ function showPastSearches() {
 ////////////////////////
 $("#searchBtn").click(function () {
   var searchCity = $("#searchInput").val();
+  pastSearches.push(searchCity.toUpperCase());
+  pastSearches = $.unique(pastSearches);
+
+  createSearchList();
+  ///save your updated search list
+
   localStorage.setItem("city", searchCity);
-  getCoordinates();
+  getCoordinates(searchCity);
   setCurrent();
   fiveDay();
-  storeSearches();
-  createSearchList();
+
   $("#content").show();
 });
 //pulls coordinates of searched city
 //making a new comment to do a new push because this won't update to https on the live site for some reason
-function getCoordinates() {
-  var currentCity = localStorage.getItem("city");
+function getCoordinates(searchCity) {
+  var currentCity = searchCity; //localStorage.getItem("city");
   var coordUrl =
     "https://api.openweathermap.org/geo/1.0/direct?q=" +
     currentCity +
@@ -78,13 +109,16 @@ function getWeather() {
       return response.json();
     })
     .then(function (data) {
-      var json = JSON.stringify(data);
-      localStorage.setItem("weatherObj", json);
+      weatherObj = data; ///updates your weatherObj so you don't have to pull it from localStorage each time.
+
+      ///save to local storage for refresh
+
+      localStorage.setItem("weatherObj", JSON.stringify(data));
     });
 }
 //sets the upper portions current weather data
 function setCurrent() {
-  var cObj = JSON.parse(localStorage.getItem("weatherObj"));
+  var cObj = weatherObj; // JSON.parse(localStorage.getItem("weatherObj"));
   console.log(cObj);
   var currentDate = moment().format("llll");
   var currentCity = localStorage.getItem("city");
@@ -125,7 +159,7 @@ function setCurrent() {
 }
 //sets the 5 day weather forecast cards
 function fiveDay() {
-  var obj = JSON.parse(localStorage.getItem("weatherObj"));
+  var obj = weatherObj; // JSON.parse(localStorage.getItem("weatherObj"));
   for (var i = 0; i < 5; i++) {
     var unixDate = obj.daily[i].dt; ///fix formatting
     var unix = eval(unixDate * 1000);
@@ -154,5 +188,3 @@ function fiveDay() {
     }
   }
 }
-
-showPastSearches();
