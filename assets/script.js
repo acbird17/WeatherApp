@@ -1,22 +1,25 @@
-var pastSearches = JSON.parse(localStorage.getItem("cities"));
-var weatherObj = JSON.parse(localStorage.getItem("weatherObj"));
+var pastSearches = [];
+var weatherObj = {};
+if (localStorage.getItem("cities") != null) {
+  pastSearches = JSON.parse(localStorage.getItem("cities"));
+  getCoordinates(pastSearches[0]);
+}
+if (localStorage.getItem("weatherObj") != null) {
+  weatherObj = JSON.parse(localStorage.getItem("weatherObj"));
+}
 
 showPastSearches();
 
-/////////////////////////button event
 $("body").on("click", ".cityButton", function () {
   var searchCity = $(this).data("city");
 
   localStorage.setItem("city", searchCity);
   getCoordinates(searchCity);
-  setCurrent();
-  fiveDay();
-
-  $("#content").show();
 });
 
 function createSearchList() {
   $("#pastSearches").empty();
+  if (pastSearches == null) return;
   pastSearches.forEach(function (city) {
     $("#pastSearches").prepend(
       $(
@@ -40,20 +43,17 @@ function createSearchList() {
 }
 
 function showPastSearches() {
-  var savedSearches = pastSearches; // JSON.parse(localStorage.getItem("cities"));
+  var savedSearches = pastSearches;
   if (savedSearches !== null) {
     pastSearches = savedSearches;
   }
   createSearchList();
 
-  if (pastSearches) {
+  if (pastSearches.length > 0) {
     var lastsearch = pastSearches[pastSearches.length - 1];
     getCoordinates(lastsearch);
-    setCurrent();
-    fiveDay();
   }
 }
-////////////////////////
 ////////////////////////
 $("#searchBtn").click(function () {
   var searchCity = $("#searchInput").val();
@@ -65,15 +65,12 @@ $("#searchBtn").click(function () {
 
   localStorage.setItem("city", searchCity);
   getCoordinates(searchCity);
-  setCurrent();
-  fiveDay();
 
   $("#content").show();
 });
 //pulls coordinates of searched city
-//making a new comment to do a new push because this won't update to https on the live site for some reason
 function getCoordinates(searchCity) {
-  var currentCity = searchCity; //localStorage.getItem("city");
+  var currentCity = searchCity;
   var coordUrl =
     "https://api.openweathermap.org/geo/1.0/direct?q=" +
     currentCity +
@@ -86,17 +83,12 @@ function getCoordinates(searchCity) {
       var currentCityLong = data[0].lon;
       var currentCityLat = data[0].lat;
       var currentCity = data[0].name;
-      localStorage.setItem("currentLong", currentCityLong);
-      localStorage.setItem("currentLat", currentCityLat);
-      localStorage.setItem("currentCity", currentCity);
-      getWeather();
+      getWeather(searchCity, currentCityLong, currentCityLat);
     });
 }
 
 //takes coordinates and puts them into a weather search
-function getWeather() {
-  var long = localStorage.getItem("currentLong");
-  var lat = localStorage.getItem("currentLat");
+function getWeather(city, long, lat) {
   var cityUrl =
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
     lat +
@@ -109,19 +101,19 @@ function getWeather() {
       return response.json();
     })
     .then(function (data) {
-      weatherObj = data; ///updates your weatherObj so you don't have to pull it from localStorage each time.
-
-      ///save to local storage for refresh
-
+      weatherObj = data;
       localStorage.setItem("weatherObj", JSON.stringify(data));
+      setCurrent(city);
+      fiveDay();
     });
 }
 //sets the upper portions current weather data
-function setCurrent() {
-  var cObj = weatherObj; // JSON.parse(localStorage.getItem("weatherObj"));
-  console.log(cObj);
+function setCurrent(currentCity) {
+  if (weatherObj == {}) {
+    return;
+  }
+  var cObj = weatherObj;
   var currentDate = moment().format("llll");
-  var currentCity = localStorage.getItem("city");
   var currentIcon = cObj.current.weather[0].id;
   var currentTemp = cObj.current.temp;
   var currentWind = cObj.current.wind_speed;
@@ -159,9 +151,9 @@ function setCurrent() {
 }
 //sets the 5 day weather forecast cards
 function fiveDay() {
-  var obj = weatherObj; // JSON.parse(localStorage.getItem("weatherObj"));
+  var obj = weatherObj;
   for (var i = 0; i < 5; i++) {
-    var unixDate = obj.daily[i].dt; ///fix formatting
+    var unixDate = obj.daily[i].dt;
     var unix = eval(unixDate * 1000);
     var dt = new Date(unix);
     var date = dt.toLocaleDateString();
@@ -187,4 +179,5 @@ function fiveDay() {
       $("#icon" + i).addClass("fa-solid fa-sun");
     }
   }
+  $("#content").show();
 }
